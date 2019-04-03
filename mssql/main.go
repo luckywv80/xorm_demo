@@ -32,8 +32,8 @@ func main() {
 	Engine.SetMaxIdleConns(5)
 
 	var config = new(SysConfig)
-	bool, err := Engine.Get(config)
-	if !bool || err != nil {
+	isTrue, err := Engine.Get(config)
+	if !isTrue || err != nil {
 		fmt.Println("this is get error : ", err)
 		return
 	}
