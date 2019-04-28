@@ -1,4 +1,4 @@
-//同一 三大数据库
+// 三大数据库
 package main
 
 import (
@@ -27,21 +27,20 @@ type SYS_CONFIG struct {
 
 
 var dbType = []DbType{
-	{DbName: "mysql", DbSource: "root:www.upsoft01.com@/antdbms?charset=utf8"},
+	{DbName: "mysql", DbSource: "root:www.upsoft01.com@tcp(127.0.0.1:3306)/antdbms?charset=utf8"},
 	{DbName: "odbc", DbSource: "driver={SQL Server};Server=192.168.186.138;Database=antdbms;uid=sa;pwd=123;"}, //mssql
 	{DbName: "oci8", DbSource: "root/123@192.168.0.120:1521/ORCL"},
 }
 
-//var index  = 0  //mysql
+var index  = 0  //mysql
 //var index  = 1   //mssql
-var index  = 2  //oci8
+//var index  = 2  //oci8
 func main() {
 
 
 	log.Println("启动数据库数据库引擎 ",dbType[index].DbName)
 	Engine, err := xorm.NewEngine(dbType[index].DbName, dbType[index].DbSource)
 	assert(err,"连接引擎出错")
-
 
 	Engine.SetTableMapper(core.SameMapper{})
 	Engine.SetColumnMapper(core.SameMapper{})
