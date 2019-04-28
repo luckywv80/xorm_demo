@@ -42,8 +42,8 @@ func main() {
 	Engine, err := xorm.NewEngine(dbType[index].DbName, dbType[index].DbSource)
 	assert(err,"连接引擎出错")
 
-	Engine.SetTableMapper(core.SameMapper{})
-	Engine.SetColumnMapper(core.SameMapper{})
+	Engine.SetTableMapper(core.GonicMapper{})
+	Engine.SetColumnMapper(core.GonicMapper{})
 
 	Engine.ShowSQL(true)
 	Engine.SetMaxIdleConns(5)
