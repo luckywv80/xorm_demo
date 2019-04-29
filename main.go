@@ -43,7 +43,6 @@ func main() {
 	assert(err,"连接引擎出错")
 
 	Engine.SetTableMapper(core.SameMapper{})
-
 	Engine.SetColumnMapper(core.SameMapper{})
 
 	Engine.ShowSQL(true)
